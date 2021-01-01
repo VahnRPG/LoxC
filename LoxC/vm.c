@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "common.h"
+#include "compiler.h"
 #include "debug.h"
 #include "vm.h"
 
@@ -44,7 +45,7 @@ static InterpretResult run() {
 		}
 		printf("\n");
 
-		disassembleInstruction(vm.chunk, (int)(vm.ip - vm.chunk->code));
+		disassembleInstruction(vm.chunk, (int) (vm.ip - vm.chunk->code));
 #endif
 
 		uint8_t instruction;
@@ -67,7 +68,7 @@ static InterpretResult run() {
 				break;
 			}
 			case OP_DIVIDE: {
-				BINARY_OP(/);
+				BINARY_OP(/ );
 				break;
 			}
 			case OP_NEGATE: {
@@ -87,9 +88,8 @@ static InterpretResult run() {
 #undef READ_BYTE
 }
 
-InterpretResult interpret(Chunk* chunk) {
-	vm.chunk = chunk;
-	vm.ip = vm.chunk->code;
+InterpretResult interpret(const char* source) {
+	compile(source);
 
-	return run();
+	return INTERPRET_OK;
 }
