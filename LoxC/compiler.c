@@ -259,6 +259,7 @@ ParseRule rules[] = {
 	[TOKEN_SLASH] = { NULL, binary, PREC_FACTOR },
 	[TOKEN_STAR] = { NULL, binary, PREC_FACTOR },
 	[TOKEN_STRING] = { NULL, NULL, PREC_NONE },
+	[TOKEN_COLON] = { NULL, NULL, PREC_NONE },
 	[TOKEN_SUPER] = { NULL, NULL, PREC_NONE },
 	[TOKEN_THIS] = { NULL, NULL, PREC_NONE },
 	[TOKEN_TRUE] = { literal, NULL, PREC_NONE },
