@@ -2,11 +2,10 @@
 */obj/
 */Content/bin/
 */Content/obj/
+Debug/
 .vs/
 *.user
-resources/logs/
-resources/old/
-resources/images/old/
-resources/sounds/old/
+LoxC.VC.VC.opendb
+LoxC.VC.db
 junk.txt
 find.php
