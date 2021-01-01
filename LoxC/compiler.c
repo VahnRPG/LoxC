@@ -208,6 +208,10 @@ static void number() {
 	emitConstant(NUMBER_VAL(value));
 }
 
+static void string() {
+	emitConstant(OBJ_VAL(copyString(parser.previous.start + 1, parser.previous.length - 2)));
+}
+
 static void unary() {
 	TokenType operatorType = parser.previous.type;
 
@@ -258,7 +262,7 @@ ParseRule rules[] = {
 	[TOKEN_SEMICOLON] = { NULL, NULL, PREC_NONE },
 	[TOKEN_SLASH] = { NULL, binary, PREC_FACTOR },
 	[TOKEN_STAR] = { NULL, binary, PREC_FACTOR },
-	[TOKEN_STRING] = { NULL, NULL, PREC_NONE },
+	[TOKEN_STRING] = { string, NULL, PREC_NONE },
 	[TOKEN_COLON] = { NULL, NULL, PREC_NONE },
 	[TOKEN_SUPER] = { NULL, NULL, PREC_NONE },
 	[TOKEN_THIS] = { NULL, NULL, PREC_NONE },
